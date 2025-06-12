@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>if you miss me</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="card-container">
+    <div class="card" onclick="showReasonsLove()">REASONS WHY I LOVE YOU</div>
+    <div class="card" onclick="showReasonsStay()">REASONS WHY WON'T I LEAVE YOU</div>
+    <div class="card" onclick="showPhotos()">PHOTOS OF US</div>
+    <div class="card" onclick="playMissMeAudio()">IF YOU MISS ME JUST CLICK ME</div>
+  </div>
+
+  <div class="floating-left">I LOVE YOU BABY</div>
+  <div class="floating-right">MWAA MWAA MWAAAA</div>
+
+  <div class="music-card-row">
+    <div class="music-card">
+      <img src="daniel.jpg" alt="Song 1">
+      <button onclick="togglePlay(0)">▶ / ❚❚</button>
+      <audio id="audio0" src="Always.mp3"></audio>
+    </div>
+    <div class="music-card">
+      <img src="paramore.jpg" alt="Song 2">
+      <button onclick="togglePlay(1)">▶ / ❚❚</button>
+      <audio id="audio1" src="The Only Exception.mp3"></audio>
+    </div>
+    <div class="music-card">
+      <img src="3000.jpg" alt="Song 3">
+      <button onclick="togglePlay(2)">▶ / ❚❚</button>
+      <audio id="audio2" src="I Love You 3000.mp3"></audio>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="../particles-config.js"></script>
+
+  <script>
+    function createFloatingLetters(selector, text) {
+      const container = document.querySelector(selector);
+      container.innerHTML = '';
+      text.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.setProperty('--shift', Math.floor(Math.random() * 10 - 5));
+        span.style.animationDelay = `${i * 0.1}s`;
+        container.appendChild(span);
+      });
+    }
+
+    createFloatingLetters('.floating-left', 'I LOVE YOU BABYYY');
+    createFloatingLetters('.floating-right', 'MWAA MWAA MWAAAA');
+
+    const audios = [
+      document.getElementById('audio0'),
+      document.getElementById('audio1'),
+      document.getElementById('audio2')
+    ];
+
+    let previouslyPlayingIndex = null;
+
+    function togglePlay(index) {
+      audios.forEach((audio, i) => {
+        if (i !== index) {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      });
+      if (audios[index].paused) {
+        audios[index].play();
+      } else {
+        audios[index].pause();
+      }
+    }
+
+    function showReasonsLove() {
+      Swal.fire({
+        title: 'Why I Love You',
+        html: `
+          <div style="max-height: 300px; overflow-y: auto; text-align: left;">
+            <ul>
+              <li>I love your smile tapos lalabas yung dimples moooo</li>
+              <li>You're my safe place</li>
+              <li>You're my peace and my home.</li>
+              <li>You make me feel loved and special.</li>
+              <li>Everytime na magkasama tayo it's like magical</li>
+              <li>You're my forever and always.</li>
+              <li>I love your hugs and kisses</li>
+              <li>I love you so so much</li>
+              <li>You pray for me</li>
+              <li>You love me with all your heart</li>
+              <li>You always check on me</li>
+              <li>You call me babyy</li>
+              <li>You accept my past</li>
+              <li>You respect me</li>
+              <li>You're proud of our relationship</li>
+              <li>You like me kahit may flaws ako</li>
+              <li>You always choose me</li>
+              <li>You're my chika buddy</li>
+              <li>You're my one and only lovelove</li>
+              <li>Hindi nauubos pasensya mo sakin kahit makulit na ako (ubos na talaga pasensya mo)</li>
+              <li>Lagi mo ako kinikisssss</li>
+              <li>You always supports me</li>
+              <li>You love me kahit ang kulit ko</li>
+            </ul>
+          </div>
+        `,
+        background: '#ffe4f3',
+        color: '#ff1493',
+        confirmButtonColor: '#ff69b4',
+        customClass: {
+          popup: 'swal2-popup-custom'
+        }
+      });
+    }
+
+    function showReasonsStay() {
+      Swal.fire({
+        title: 'Why I Won’t Leave You',
+        html: `
+          <div style="max-height: 300px; overflow-y: auto; text-align: left;">
+            <ul>
+              <li>Because we’re meant to be</li>
+              <li>I promised to myself na hinding hindi ko naniiwan itong babaeng ito</li>
+              <li>You complete my world</li>
+              <li>No matter what, I will always choose you lovelove</li>
+              <li>Through ups and downs, i'll stay with you</li>
+              <li>I love you endlessly</li>
+              <li>Kawawa ka, kawawa rin ako</li>
+              <li>Wala na magbibigay sakin ng kiss e</li>
+              <li>Ayokong mawala ka pa sakin</li>
+              <li>Hindi na tayo maghihiwalay kasi date to marry ang goal natin</li>
+              <li>Nagpromise ako na dadalhin kita sa harap ng altar</li>
+              <li>Magtratravel pa tayo around the world</li>
+              <li>Bawal na tayong maghiwalay</li>
+              <li>Magcry ka talaga everynight pag iniwan kita so hindi kita iiwan</li>
+              <li>Mahal na mahal kitaaa</li>
+              <li>Kasi ikaw na yung gusto kong makasama forever and ever</li>
+              <li>Magpapakasal pa tayo sa July 28, 2035</li>
+              <li>Kilala ka na ng buong family ko</li>
+              <li>Hindi talaga pwede iwan, bawaaaaal</li>
+              <li>I love you so much forever</li>
+            </ul>
+          </div>
+        `,
+        background: '#ffe4f3',
+        color: '#ff1493',
+        confirmButtonColor: '#ff69b4',
+        customClass: {
+          popup: 'swal2-popup-custom'
+        }
+      });
+    }
+
+    function showPhotos() {
+      Swal.fire({
+        title: 'ME AND MY BABY',
+        html: `
+          <div style="max-height: 400px; overflow-y: auto;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+              <img src="pic1.jpg" style="width: 100%; border-radius: 10px;">
+              <img src="pic2.jpg" style="width: 100%; border-radius: 10px;">
+              <img src="pic3.jpg" style="width: 100%; border-radius: 10px;">
+              <img src="pic4.jpg" style="width: 100%; border-radius: 10px;">
+              <img src="pic5.jpg" style="width: 100%; border-radius: 10px;">
+              <img src="pic6.jpg" style="width: 100%; border-radius: 10px;">
+              <img src="pic7.jpg" style="width: 100%; border-radius: 10px;">
+              <img src="pic8.jpg" style="width: 100%; border-radius: 10px;">
+              <img src="pic9.jpg" style="width: 100%; border-radius: 10px;">
+            </div>
+          </div>
+        `,
+        background: '#ffe4f3',
+        color: '#ff1493',
+        confirmButtonColor: '#ff69b4',
+        customClass: {
+          popup: 'swal2-popup-custom'
+        }
+      });
+    }
+
+    const missMeAudio = new Audio('love.mp3');
+    let lastPlayingIndex = null;
+
+    function playMissMeAudio() {
+      audios.forEach((audio, i) => {
+        if (!audio.paused) {
+          lastPlayingIndex = i;
+          audio.pause();
+        }
+      });
+
+      missMeAudio.currentTime = 0;
+      missMeAudio.play();
+
+      missMeAudio.onended = () => {
+        if (lastPlayingIndex !== null) {
+          audios[lastPlayingIndex].play();
+          lastPlayingIndex = null;
+        }
+      };
+    }
+  </script>
+</body>
+</html>
